@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class AdministradorVo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_administrador;
+    private Long id;
 
     @Column(length = 100)
     private String nombre;
@@ -19,19 +19,18 @@ public class AdministradorVo {
     public AdministradorVo() {
     }
 
-    public AdministradorVo(Long id_administrador, String nombre, String apellido) {
-        this.id_administrador = id_administrador;
+    public AdministradorVo(Long id, String nombre, String apellido) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-
     }
 
-    public Long getId_administrador() {
-        return id_administrador;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_administrador(Long id_administrador) {
-        this.id_administrador = id_administrador;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -48,14 +47,5 @@ public class AdministradorVo {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    @Override
-    public String toString() {
-        return "AdministradorVo{" +
-                "id_administrador=" + id_administrador +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido +
-                '}';
     }
 }

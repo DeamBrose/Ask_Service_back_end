@@ -9,7 +9,7 @@ import java.util.*;
 public class EmpleadoVo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_empleado;
+    private Long id;
 
     @Column(length = 100)
     private String nombre;
@@ -36,22 +36,23 @@ public class EmpleadoVo implements Serializable{
     public EmpleadoVo() {
     }
 
-    public EmpleadoVo(Long id_empleado, String nombre, String apellido, Integer telefono, Integer dni, String email, String descripción) {
-        this.id_empleado = id_empleado;
+    public EmpleadoVo(Long id, String nombre, String apellido, Integer telefono, Integer dni, String email, String descripción, List<ServicioVo> servicios) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.dni = dni;
         this.email = email;
         this.descripción = descripción;
+        this.servicios = servicios;
     }
 
-    public Long getId_empleado() {
-        return id_empleado;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_empleado(Long id_empleado) {
-        this.id_empleado = id_empleado;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -108,19 +109,5 @@ public class EmpleadoVo implements Serializable{
 
     public void setServicios(List<ServicioVo> servicios) {
         this.servicios = servicios;
-    }
-
-    @Override
-    public String toString() {
-        return "EmpleadoVo{" +
-                "id_empleado=" + id_empleado +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", telefono=" + telefono +
-                ", dni=" + dni +
-                ", email='" + email + '\'' +
-                ", descripción='" + descripción + '\'' +
-                ", servicios=" + servicios +
-                '}';
     }
 }

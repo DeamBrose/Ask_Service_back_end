@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class DetallePagoVo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_detalle_pago;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "id_pago", referencedColumnName = "id_pago")
@@ -22,19 +22,19 @@ public class DetallePagoVo {
     public DetallePagoVo() {
     }
 
-    public DetallePagoVo(Long id_detalle_pago, PagoVo pagovo, String direccion, double importe) {
-        this.id_detalle_pago = id_detalle_pago;
+    public DetallePagoVo(Long id, PagoVo pagovo, String direccion, double importe) {
+        this.id = id;
         this.pagovo = pagovo;
         this.direccion = direccion;
         this.importe = importe;
     }
 
-    public Long getId_detalle_pago() {
-        return id_detalle_pago;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_detalle_pago(Long id_detalle_pago) {
-        this.id_detalle_pago = id_detalle_pago;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public PagoVo getPagovo() {

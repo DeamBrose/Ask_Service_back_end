@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ClienteVo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_cliente;
+    private Long id;
 
     @Column(length = 100)
     private String nombre;
@@ -19,10 +19,10 @@ public class ClienteVo {
     private String email;
 
     @Column(length = 9, nullable = false, unique = true)
-    private int telefono_1;
+    private int telefono1;
 
     @Column(length = 9, unique = true)
-    private int telefono_2;
+    private int telefono2;
 
     @Column(length = 200)
     private String dirección;
@@ -30,22 +30,22 @@ public class ClienteVo {
     public ClienteVo() {
     }
 
-    public ClienteVo(Long id_cliente, String nombre, String apellido, String email, int telefono_1, int telefono_2, String dirección) {
-        this.id_cliente = id_cliente;
+    public ClienteVo(Long id, String nombre, String apellido, String email, int telefono1, int telefono2, String dirección) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.telefono_1 = telefono_1;
-        this.telefono_2 = telefono_2;
+        this.telefono1 = telefono1;
+        this.telefono2 = telefono2;
         this.dirección = dirección;
     }
 
-    public Long getId_cliente() {
-        return id_cliente;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -72,20 +72,20 @@ public class ClienteVo {
         this.email = email;
     }
 
-    public int getTelefono_1() {
-        return telefono_1;
+    public int getTelefono1() {
+        return telefono1;
     }
 
-    public void setTelefono_1(int telefono_1) {
-        this.telefono_1 = telefono_1;
+    public void setTelefono1(int telefono1) {
+        this.telefono1 = telefono1;
     }
 
-    public int getTelefono_2() {
-        return telefono_2;
+    public int getTelefono2() {
+        return telefono2;
     }
 
-    public void setTelefono_2(int telefono_2) {
-        this.telefono_2 = telefono_2;
+    public void setTelefono2(int telefono2) {
+        this.telefono2 = telefono2;
     }
 
     public String getDirección() {
