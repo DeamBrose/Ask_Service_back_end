@@ -3,34 +3,37 @@ package company.askservice.appweb.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "rolvo")
-public class RolVo {
+@Table(name = "rol")
+public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_rol;
+    private Long id;
 
     // QwQ
     @Column
-    private String tipo_rol;
+    private String tipoRol;
 
-    public RolVo() {
+    public Rol() {
     }
 
-    public Long getId_rol() {
-        return id_rol;
+    public Rol(Long id, String tipoRol) {
+        this.id = id;
+        this.tipoRol = tipoRol;
     }
 
-    public void setId_rol(Long id_rol) {
-        this.id_rol = id_rol;
+    public Long getId() {
+        return id;
     }
 
-    public String getTipo_rol() {
-        return tipo_rol;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setTipo_rol(String tipo_rol) {
-        this.tipo_rol = tipo_rol;
+    public String getTipoRol() {
+        return tipoRol;
     }
 
-
+    public void setTipoRol(String tipoRol) {
+        this.tipoRol = tipoRol;
+    }
 }

@@ -1,6 +1,6 @@
 package company.askservice.appweb.service;
 
-import company.askservice.appweb.model.EmpleadoVo;
+import company.askservice.appweb.model.Empleado;
 import company.askservice.appweb.repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,20 +9,21 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class EmpleadoServiceImpl implements EmpleadoService {
+public class EmpleadoServiceImpl {
+
 
     @Autowired
-    private EmpleadoRepository reempleservice;
+    private EmpleadoRepository repoEmpleado;
 
-    @Override
-    @Transactional//Guardar empleado
-    public EmpleadoVo saveEmpleado(EmpleadoVo empleado) {
-        return reempleservice.save(empleado);
+
+    @Transactional
+    public Empleado saveEmpleado(Empleado empleado) {
+        return repoEmpleado.save(empleado);
     }
 
-    @Override//Listar empleado
+
     @Transactional(readOnly = true)
-    public List<EmpleadoVo> ListarEmpleado() {
-        return reempleservice.findAll();
+    public List<Empleado> ListarEmpleado() {
+        return repoEmpleado.findAll();
     }
 }

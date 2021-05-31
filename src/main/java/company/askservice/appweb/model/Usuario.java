@@ -3,27 +3,27 @@ package company.askservice.appweb.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "usuariosvo")
-public class UsuarioVo {
+@Table(name = "usuario")
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_usuario;
+    private Long id;
 
     @OneToOne
-    @JoinColumn(name = "id_administrador",referencedColumnName = "id_administrador")
-    private AdministradorVo administradorvo;
+    @JoinColumn(name = "id_administrador",referencedColumnName = "id")
+    private Administrador administrador;
 
     @OneToOne
-    @JoinColumn(name = "id_empleado",referencedColumnName = "id_empleado")
-    private EmpleadoVo empleadovo;
+    @JoinColumn(name = "id_empleado",referencedColumnName = "id")
+    private Empleado empleado;
 
     @OneToOne
-    @JoinColumn(name = "id_cliente",referencedColumnName = "id_cliente")
-    private ClienteVo clientevo;
+    @JoinColumn(name = "id_cliente",referencedColumnName = "id")
+    private Cliente cliente;
 
     @OneToOne
-    @JoinColumn(name = "id_rol",referencedColumnName = "id_rol")
-    private RolVo rolvo;
+    @JoinColumn(name = "id_rol",referencedColumnName = "id")
+    private Rol rol;
 
     @Column(nullable = false, unique = true)
     private String usuario;
@@ -31,57 +31,57 @@ public class UsuarioVo {
     @Column(nullable = false, unique = true)
     private String contrasena;
 
-    public UsuarioVo() {
+    public Usuario() {
     }
 
-    public UsuarioVo(Long id_usuario, AdministradorVo administradorvo, EmpleadoVo empleadovo, ClienteVo clientevo, RolVo rolvo, String usuario, String contrasena) {
-        this.id_usuario = id_usuario;
-        this.administradorvo = administradorvo;
-        this.empleadovo = empleadovo;
-        this.clientevo = clientevo;
-        this.rolvo = rolvo;
+    public Usuario(Long id, Administrador administrador, Empleado empleado, Cliente cliente, Rol rol, String usuario, String contrasena) {
+        this.id = id;
+        this.administrador = administrador;
+        this.empleado = empleado;
+        this.cliente = cliente;
+        this.rol = rol;
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
 
-    public Long getId_usuario() {
-        return id_usuario;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public AdministradorVo getAdministradorvo() {
-        return administradorvo;
+    public Administrador getAdministrador() {
+        return administrador;
     }
 
-    public void setAdministradorvo(AdministradorVo administradorvo) {
-        this.administradorvo = administradorvo;
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 
-    public EmpleadoVo getEmpleadovo() {
-        return empleadovo;
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void setEmpleadovo(EmpleadoVo empleadovo) {
-        this.empleadovo = empleadovo;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
-    public ClienteVo getClientevo() {
-        return clientevo;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClientevo(ClienteVo clientevo) {
-        this.clientevo = clientevo;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public RolVo getRolvo() {
-        return rolvo;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRolvo(RolVo rolvo) {
-        this.rolvo = rolvo;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     public String getUsuario() {

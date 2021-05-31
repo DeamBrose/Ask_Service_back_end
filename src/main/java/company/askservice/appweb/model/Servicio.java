@@ -5,52 +5,64 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "serviciosvo")
-public class ServicioVo implements Serializable{
+@Table(name = "servicio")
+public class Servicio implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_servicio;
+    private Long id;
 
     @Column(length = 200)
-    private String nombre_servcio;
+    private String nombre;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_categoria")
-    private CategoriaVo categoriavo;
+    private Categoria categoria;
 
     @ManyToMany(mappedBy = "servicios")
-    private List<EmpleadoVo> empleados;
+    private List<Empleado> empleados;
 
 
-    public ServicioVo() {
+    public Servicio() {
     }
 
-    public Long getId_servicio() {
-        return id_servicio;
+    public Servicio(Long id, String nombre, Categoria categoria, List<Empleado> empleados) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.empleados = empleados;
     }
 
-    public void setId_servicio(Long id_servicio) {
-        this.id_servicio = id_servicio;
+    public Long getId() {
+        return id;
     }
 
-    public String getNombre_servcio() {
-        return nombre_servcio;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setNombre_servcio(String nombre_servcio) {
-        this.nombre_servcio = nombre_servcio;
+    public String getNombre() {
+        return nombre;
     }
 
-    public CategoriaVo getCategoriavo() {
-        return categoriavo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setCategoriavo(CategoriaVo categoriavo) {
-        this.categoriavo = categoriavo;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
 
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
 }

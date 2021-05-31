@@ -1,6 +1,7 @@
 package company.askservice.appweb.service;
 
-import company.askservice.appweb.model.ServicioVo;
+import company.askservice.appweb.config.Error.exceptions.NotFound;
+import company.askservice.appweb.model.Servicio;
 import company.askservice.appweb.repository.ServicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,32 +11,32 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ServicioServiceImpl implements ServicioService {
+public class ServicioServiceImpl{
 
     @Autowired
-    private ServicioRepository serviciorepo;
+    private ServicioRepository repoService;
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<ServicioVo> ListarServicios() {
-        return serviciorepo.findAll();
+
+
+    public Servicio FindByIdServicio(Long id) {
+        if(!repoService.existsById(id)) throw new NotFound("No se encontró el servicio con el id " + id);
+        return repoService.findById(id).orElse(null);
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<ServicioVo> FindByIdServicio(Long id) {
-        return serviciorepo.findById(id);
+
+    public Servicio saveServicio(Servicio servicio) {
+        return repoService.save(servicio);
     }
 
-    @Override
-    @Transactional
-    public void DeleteByIdServicio(Long id) {
-        serviciorepo.deleteById(id);
+    public List<?> filtroServicio(String servicio){
+       List<Servicio> lista = repoService.findByNombreLike(servicio);
+        if(lista.isEmpty()) throw new NotFound("No se encontró coincidencias con los servicios");
+        return lista;
     }
 
-    @Override
-    @Transactional
-    public ServicioVo saveServicio(ServicioVo servicio) {
-        return serviciorepo.save(servicio);
+    public List<?> findAll(){
+        List<Servicio> all = repoService.findAll();
+        if(all.isEmpty())throw new NotFound("No se encontró registros en la lista");
+        return all;
     }
 }

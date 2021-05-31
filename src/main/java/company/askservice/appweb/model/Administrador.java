@@ -3,8 +3,8 @@ package company.askservice.appweb.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "administradorvo")
-public class AdministradorVo {
+@Table(name = "administrador")
+public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,10 +16,10 @@ public class AdministradorVo {
     private  String apellido;
 
 
-    public AdministradorVo() {
+    public Administrador() {
     }
 
-    public AdministradorVo(Long id, String nombre, String apellido) {
+    public Administrador(Long id, String nombre, String apellido) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

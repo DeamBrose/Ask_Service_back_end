@@ -3,15 +3,15 @@ package company.askservice.appweb.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "detallepagovo")
-public class DetallePagoVo {
+@Table(name = "detallepago")
+public class DetallePago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "id_pago", referencedColumnName = "id_pago")
-    private PagoVo pagovo;
+    @JoinColumn(name = "id_pago", referencedColumnName = "id")
+    private Pago pago;
 
     @Column(length = 200)
     private String direccion;
@@ -19,12 +19,12 @@ public class DetallePagoVo {
     @Column
     private double importe;
 
-    public DetallePagoVo() {
+    public DetallePago() {
     }
 
-    public DetallePagoVo(Long id, PagoVo pagovo, String direccion, double importe) {
+    public DetallePago(Long id, Pago pago, String direccion, double importe) {
         this.id = id;
-        this.pagovo = pagovo;
+        this.pago = pago;
         this.direccion = direccion;
         this.importe = importe;
     }
@@ -37,12 +37,12 @@ public class DetallePagoVo {
         this.id = id;
     }
 
-    public PagoVo getPagovo() {
-        return pagovo;
+    public Pago getPago() {
+        return pago;
     }
 
-    public void setPagovo(PagoVo pagovo) {
-        this.pagovo = pagovo;
+    public void setPago(Pago pago) {
+        this.pago = pago;
     }
 
     public String getDireccion() {

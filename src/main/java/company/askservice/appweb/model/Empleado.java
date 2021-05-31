@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-@Table(name = "empleadosvo")
-public class EmpleadoVo implements Serializable{
+@Table(name = "empleado")
+public class Empleado implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,13 +30,13 @@ public class EmpleadoVo implements Serializable{
     private String descripción;
 
     @ManyToMany
-    private List<ServicioVo> servicios;
+    private List<Servicio> servicios;
 
 
-    public EmpleadoVo() {
+    public Empleado() {
     }
 
-    public EmpleadoVo(Long id, String nombre, String apellido, Integer telefono, Integer dni, String email, String descripción, List<ServicioVo> servicios) {
+    public Empleado(Long id, String nombre, String apellido, Integer telefono, Integer dni, String email, String descripción, List<Servicio> servicios) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -103,11 +103,11 @@ public class EmpleadoVo implements Serializable{
         this.descripción = descripción;
     }
 
-    public List<ServicioVo> getServicios() {
+    public List<Servicio> getServicios() {
         return servicios;
     }
 
-    public void setServicios(List<ServicioVo> servicios) {
+    public void setServicios(List<Servicio> servicios) {
         this.servicios = servicios;
     }
 }

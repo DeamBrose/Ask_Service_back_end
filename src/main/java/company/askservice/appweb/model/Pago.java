@@ -3,51 +3,52 @@ package company.askservice.appweb.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pagosvo")
-public class PagoVo {
+@Table(name = "pago")
+public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_pago;
+    private Long id;
 
     @Column(length = 10)
-    private String fecha_pago;
+    private String fechaPago;
 
     @Column
     private boolean estado;
 
     @OneToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
-    private ClienteVo clientes;
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
+    private Cliente clientes;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_servicio")
-    private ServicioVo serviciovo;
+    private Servicio servicio;
 
 
-    public PagoVo() {
+    public Pago() {
     }
 
-    public PagoVo(Long id_pago, String fecha_pago, boolean estado, ClienteVo clientes) {
-        this.id_pago = id_pago;
-        this.fecha_pago = fecha_pago;
+    public Pago(Long id, String fechaPago, boolean estado, Cliente clientes, Servicio servicio) {
+        this.id = id;
+        this.fechaPago = fechaPago;
         this.estado = estado;
         this.clientes = clientes;
+        this.servicio = servicio;
     }
 
-    public Long getId_pago() {
-        return id_pago;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_pago(Long id_pago) {
-        this.id_pago = id_pago;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getFecha_pago() {
-        return fecha_pago;
+    public String getFechaPago() {
+        return fechaPago;
     }
 
-    public void setFecha_pago(String fecha_pago) {
-        this.fecha_pago = fecha_pago;
+    public void setFechaPago(String fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
     public boolean isEstado() {
@@ -58,13 +59,19 @@ public class PagoVo {
         this.estado = estado;
     }
 
-    public ClienteVo getClientes() {
+    public Cliente getClientes() {
         return clientes;
     }
 
-    public void setClientes(ClienteVo clientes) {
+    public void setClientes(Cliente clientes) {
         this.clientes = clientes;
     }
 
+    public Servicio getServicio() {
+        return servicio;
+    }
 
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
+    }
 }
