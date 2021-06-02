@@ -2,15 +2,18 @@ package company.askservice.appweb.service;
 
 import company.askservice.appweb.Utils.MHelpers;
 import company.askservice.appweb.Utils.other.UsuarioAdminDTO;
+import company.askservice.appweb.Utils.other.UsuarioLoginDTO;
 import company.askservice.appweb.config.Error.exceptions.BadRequest;
-import company.askservice.appweb.config.Error.exceptions.NotFound;
 import company.askservice.appweb.model.Usuario;
 import company.askservice.appweb.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UsuarioServiceImpl {
@@ -48,8 +51,26 @@ public class UsuarioServiceImpl {
         return repoUsuario.save(user);
     }
 
+    public ResponseEntity<?> Login(UsuarioLoginDTO logindto){
+        String username = logindto.getUsuario();
+        String password = logindto.getContrasena();
+        Map<String, Object> resp = new HashMap<>();
 
+        if(username.isEmpty()) throw new BadRequest("Ingrese el nombre del usuario.");
+        if(password.isEmpty()) throw new BadRequest("Ingrese la contraseña.");
 
+        if(repoUsuario.existsUsuarioByUsuarioAndContrasena(username, password)){
+            Usuario userlog = repoUsuario.findByUsuario(username);
+            resp.put("Válido", true);
+            resp.put("Message", "Credenciales válidas");
+            resp.put("Usuario", userlog);
 
+            return new ResponseEntity<>(resp, HttpStatus.OK);
+        }else {
+            resp.put("Válido", false);
+            resp.put("Message", "Credenciales no válidas");
 
+            return new ResponseEntity<>(resp, HttpStatus.UNAUTHORIZED);
+        }
+    }
 }

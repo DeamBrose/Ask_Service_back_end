@@ -1,6 +1,7 @@
 package company.askservice.appweb.controller;
 
 import company.askservice.appweb.Utils.other.UsuarioAdminDTO;
+import company.askservice.appweb.Utils.other.UsuarioLoginDTO;
 import company.askservice.appweb.model.Usuario;
 import company.askservice.appweb.service.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,10 @@ public class UsuarioController {
 
     @PostMapping("/registrar/admin")
     public  ResponseEntity<?> RegistrarUsuarioAdmin(@RequestBody UsuarioAdminDTO usuario) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(serviceUsuario.RegistrarUsuarioAdmin(usuario));
+        return ResponseEntity.status(HttpStatus.CREATED).body(serviceUsuario.RegistrarUsuarioAdmin(usuario));
+    }
+    @PostMapping("/login")
+    public ResponseEntity<?> UsuarioLogin(@RequestBody UsuarioLoginDTO userlogin){
+        return serviceUsuario.Login(userlogin);
     }
 }
