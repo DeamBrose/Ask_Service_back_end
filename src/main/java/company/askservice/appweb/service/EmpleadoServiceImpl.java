@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class EmpleadoServiceImpl {
 
-
     @Autowired
     private EmpleadoRepository repoEmpleado;
 
@@ -21,9 +20,28 @@ public class EmpleadoServiceImpl {
         return repoEmpleado.save(empleado);
     }
 
+    //FILTROS
 
     @Transactional(readOnly = true)
     public List<Empleado> ListarEmpleado() {
         return repoEmpleado.findAll();
     }
+
+    @Transactional(readOnly = true)
+    public List<Empleado> ListarEmpleadoActivo() {
+        return repoEmpleado.findAllByEstadoEquals("true");
+    }
+
+    @Transactional(readOnly = true)
+    public List<Empleado> ListarEmpleadoInactivo() {
+        return repoEmpleado.findAllByEstadoEquals("false");
+    }
+
+    @Transactional(readOnly = true)
+    public List<Empleado> findAllByNombreContainsOrApellidoContains(String nom,String ape) {
+        return repoEmpleado.findAllByNombreContainsOrApellidoContains(nom, ape);
+    }
+
+
+
 }

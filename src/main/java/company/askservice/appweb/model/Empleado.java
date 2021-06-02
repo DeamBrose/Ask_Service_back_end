@@ -29,14 +29,16 @@ public class Empleado implements Serializable{
     @Column(length = 500)
     private String descripción;
 
+    @Column(length = 5)
+    private String estado;
+
     @ManyToMany
     private List<Servicio> servicios;
-
 
     public Empleado() {
     }
 
-    public Empleado(Long id, String nombre, String apellido, Integer telefono, Integer dni, String email, String descripción, List<Servicio> servicios) {
+    public Empleado(Long id, String nombre, String apellido, Integer telefono, Integer dni, String email, String descripción, String estado, List<Servicio> servicios) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -44,6 +46,7 @@ public class Empleado implements Serializable{
         this.dni = dni;
         this.email = email;
         this.descripción = descripción;
+        this.estado = estado;
         this.servicios = servicios;
     }
 
@@ -102,6 +105,10 @@ public class Empleado implements Serializable{
     public void setDescripción(String descripción) {
         this.descripción = descripción;
     }
+
+    public String getEstado() { return estado; }
+
+    public void setEstado(String estado) { this.estado = estado; }
 
     public List<Servicio> getServicios() {
         return servicios;
