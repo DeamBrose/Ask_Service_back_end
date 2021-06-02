@@ -7,4 +7,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     public Usuario findByContrasena(String contraseña);
     public Usuario findByUsuario(String username);
     public Usuario findByAdministrador_Id(Long IdAdmin);
+    Boolean existsUsuarioByUsuarioAndContrasena(String username, String password);
 }
