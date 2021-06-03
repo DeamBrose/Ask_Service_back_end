@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ServicioServiceImpl{
+public class ServicioService {
 
     @Autowired
     private ServicioRepository repoService;

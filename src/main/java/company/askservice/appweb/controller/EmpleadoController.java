@@ -1,7 +1,7 @@
 package company.askservice.appweb.controller;
 
 import company.askservice.appweb.model.Empleado;
-import company.askservice.appweb.service.EmpleadoServiceImpl;
+import company.askservice.appweb.service.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.List;
 public class EmpleadoController {
 
     @Autowired
-    private EmpleadoServiceImpl serviceEmpleado;
+    private EmpleadoService serviceEmpleado;
 
 
     @PostMapping("/registrarEmpleado")

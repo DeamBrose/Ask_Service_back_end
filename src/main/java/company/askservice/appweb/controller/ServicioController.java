@@ -1,22 +1,18 @@
 package company.askservice.appweb.controller;
 
 import company.askservice.appweb.model.Servicio;
-import company.askservice.appweb.repository.ServicioRepository;
-import company.askservice.appweb.service.ServicioServiceImpl;
+import company.askservice.appweb.service.ServicioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.websocket.server.PathParam;
-import java.util.List;
 
 @RestController
 @RequestMapping("/servicio")
 public class ServicioController {
 
     @Autowired
-    private ServicioServiceImpl serviceService;
+    private ServicioService serviceService;
 
 
     @PostMapping("/registrarServicio")
