@@ -30,8 +30,11 @@ public class Empleado implements Serializable{
     private String email;
 
     @Column(length = 500)
-    private String descripción;
+    private String descripcion;
 
     @Column(length = 5)
     private String estado;
+
+    @OneToMany
+    private List<Servicio> servicio;
 }

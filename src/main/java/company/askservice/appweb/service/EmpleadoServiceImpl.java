@@ -38,6 +38,4 @@ public class EmpleadoServiceImpl {
     @Transactional(readOnly = true)
     public List<Empleado> findAllByNombreContainsOrApellidoContains(String nom,String ape) { return repoEmpleado.findAllByNombreContainsOrApellidoContains(nom, ape); }
 
-
-
 }
