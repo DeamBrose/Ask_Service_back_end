@@ -22,8 +22,21 @@ public class EmpleadoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceEmpleado.saveEmpleado(empleado));
     }
 
+    //FILTROS
     @GetMapping("/listar")
     public List<Empleado> listaempleado(){
         return serviceEmpleado.ListarEmpleado();
     }
+
+    @GetMapping("/listarempleactivo")
+    public List<Empleado> listaempleadoActivo(){ return serviceEmpleado.ListarEmpleadoActivo(); }
+
+    @GetMapping("/listarempleinactivo")
+    public List<Empleado> listaempleadoInactivo(){ return serviceEmpleado.ListarEmpleadoInactivo(); }
+
+    @GetMapping(path = "/listaremplepornomape/{nomape}")
+    public List<Empleado> findAllByNombreOrApellidoContains(@PathVariable("nomape") String nomape){
+        return serviceEmpleado.findAllByNombreContainsOrApellidoContains(nomape,nomape);
+    }
+
 }
