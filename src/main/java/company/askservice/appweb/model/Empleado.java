@@ -15,16 +15,10 @@ public class Empleado implements Serializable{
     private Long id;
 
     @Column(length = 100)
-    private String nombre;
-
-    @Column(length = 100)
     private String apellido;
 
-    @Column(length = 9, nullable = false, unique = true)
-    private Integer telefono;
-
     @Column(length = 8, nullable = false, unique = true)
-    private Integer dni;
+    private String dni;
 
     @Column(length = 45, nullable = false, unique = true)
     private String email;
@@ -32,9 +26,16 @@ public class Empleado implements Serializable{
     @Column(length = 500)
     private String descripcion;
 
+    @Column(length = 100)
+    private String nombre;
+
+    @Column(length = 9, nullable = false, unique = true)
+    private String telefono;
+
     @Column(length = 5)
     private String estado;
 
     @OneToMany
     private List<Servicio> servicio;
+
 }

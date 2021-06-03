@@ -21,4 +21,5 @@ public class DetallePago {
 
     @Column
     private double importe;
+
 }

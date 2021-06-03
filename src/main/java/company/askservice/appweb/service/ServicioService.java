@@ -11,12 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ServicioServiceImpl{
+public class ServicioService {
 
     @Autowired
     private ServicioRepository repoService;
-
-
 
     public Servicio FindByIdServicio(Long id) {
         if(!repoService.existsById(id)) throw new NotFound("No se encontró el servicio con el id " + id);

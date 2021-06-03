@@ -22,8 +22,11 @@ public class Cliente {
     private String email;
 
     @Column(length = 9, nullable = false, unique = true)
-    private int telefono;
+
+    private String telefono;
 
     @Column(length = 200)
     private String dirección;
+
 }
+

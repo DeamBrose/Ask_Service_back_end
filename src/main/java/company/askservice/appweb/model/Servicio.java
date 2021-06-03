@@ -31,5 +31,4 @@ public class Servicio implements Serializable{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_empleado")
     private Empleado empleado;
-
 }
