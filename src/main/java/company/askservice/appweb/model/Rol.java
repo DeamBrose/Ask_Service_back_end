@@ -1,7 +1,10 @@
 package company.askservice.appweb.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "rol")
 public class Rol {
@@ -9,31 +12,7 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // QwQ
     @Column
     private String tipoRol;
 
-    public Rol() {
-    }
-
-    public Rol(Long id, String tipoRol) {
-        this.id = id;
-        this.tipoRol = tipoRol;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTipoRol() {
-        return tipoRol;
-    }
-
-    public void setTipoRol(String tipoRol) {
-        this.tipoRol = tipoRol;
-    }
 }
