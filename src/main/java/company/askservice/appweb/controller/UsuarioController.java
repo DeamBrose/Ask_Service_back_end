@@ -1,9 +1,9 @@
 package company.askservice.appweb.controller;
 
-import company.askservice.appweb.Utils.other.UsuarioAdminDTO;
+import company.askservice.appweb.Utils.other.UsuarioClienteDTO;
 import company.askservice.appweb.Utils.other.UsuarioLoginDTO;
 import company.askservice.appweb.model.Usuario;
-import company.askservice.appweb.service.UsuarioServiceImpl;
+import company.askservice.appweb.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +16,16 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioServiceImpl serviceUsuario;
+    private UsuarioService serviceUsuario;
 
     @GetMapping("/listar")
     public List<Usuario> ListarUsuario(){
         return serviceUsuario.ListarUsuario();
     }
 
-    @PostMapping("/registrar/admin")
-    public  ResponseEntity<?> RegistrarUsuarioAdmin(@RequestBody UsuarioAdminDTO usuario) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(serviceUsuario.RegistrarUsuarioAdmin(usuario));
+    @PostMapping("/registrar/userCliente")
+    public  ResponseEntity<?> RegistrarUsuarioCliente(@RequestBody UsuarioClienteDTO clientedto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(serviceUsuario.RegistrarUsuarioCliente(clientedto));
     }
     @PostMapping("/login")
     public ResponseEntity<?> UsuarioLogin(@RequestBody UsuarioLoginDTO userlogin){
