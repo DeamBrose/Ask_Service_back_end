@@ -34,8 +34,4 @@ public class Empleado implements Serializable{
 
     @Column(length = 5)
     private String estado;
-
-    @OneToMany
-    private List<Servicio> servicio;
-
 }
