@@ -12,7 +12,6 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // QwQ
     @Column
     private String tipoRol;
 
