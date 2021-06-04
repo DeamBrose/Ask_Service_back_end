@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
+@Data
 @Entity
 @Table(name = "empleado")
-@Data
 public class Empleado implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,17 +17,14 @@ public class Empleado implements Serializable{
     @Column(length = 100)
     private String apellido;
 
-    @Column(length = 500)
-    private String descripción;
-
     @Column(length = 8, nullable = false, unique = true)
     private String dni;
 
     @Column(length = 45, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 5)
-    private String estado;
+    @Column(length = 500)
+    private String descripcion;
 
     @Column(length = 100)
     private String nombre;
@@ -35,7 +32,6 @@ public class Empleado implements Serializable{
     @Column(length = 9, nullable = false, unique = true)
     private String telefono;
 
-    @ManyToMany
-    private List<Servicio> servicios;
-
+    @Column(length = 5)
+    private String estado;
 }

@@ -4,9 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "cliente")
-@Data
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,11 @@ public class Cliente {
     private String email;
 
     @Column(length = 9, nullable = false, unique = true)
+
     private String telefono;
 
     @Column(length = 200)
     private String dirección;
 
 }
+

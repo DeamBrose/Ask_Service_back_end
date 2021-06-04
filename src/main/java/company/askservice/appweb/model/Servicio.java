@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "servicio")
-@Data
 public class Servicio implements Serializable{
 
     @Id
@@ -18,12 +18,17 @@ public class Servicio implements Serializable{
     @Column(length = 200)
     private String nombre;
 
+    @Column
+    private double precio;
+
+    @Column(length = 500)
+    private String descripcion;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    @ManyToMany(mappedBy = "servicios")
-    private List<Empleado> empleados;
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_empleado")
+    private Empleado empleado;
 }

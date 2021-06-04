@@ -16,8 +16,6 @@ public class ServicioService {
     @Autowired
     private ServicioRepository repoService;
 
-
-
     public Servicio FindByIdServicio(Long id) {
         if(!repoService.existsById(id)) throw new NotFound("No se encontró el servicio con el id " + id);
         return repoService.findById(id).orElse(null);

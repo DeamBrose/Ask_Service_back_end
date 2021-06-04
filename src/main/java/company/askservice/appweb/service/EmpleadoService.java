@@ -28,9 +28,7 @@ public class EmpleadoService {
     }
 
     @Transactional(readOnly = true)
-    public List<Empleado> ListarEmpleadoActivo() {
-        return repoEmpleado.findAllByEstadoEquals("true");
-    }
+    public List<Empleado> ListarEmpleadoActivo() { return repoEmpleado.findAllByEstadoEquals("true"); }
 
     @Transactional(readOnly = true)
     public List<Empleado> ListarEmpleadoInactivo() {
@@ -38,10 +36,6 @@ public class EmpleadoService {
     }
 
     @Transactional(readOnly = true)
-    public List<Empleado> findAllByNombreContainsOrApellidoContains(String nom,String ape) {
-        return repoEmpleado.findAllByNombreContainsOrApellidoContains(nom, ape);
-    }
-
-
+    public List<Empleado> findAllByNombreContainsOrApellidoContains(String nom,String ape) { return repoEmpleado.findAllByNombreContainsOrApellidoContains(nom, ape); }
 
 }

@@ -20,8 +20,8 @@ public class ServicioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceService.saveServicio(servicio));
     }
 
-    @GetMapping("/filtro")
-    public ResponseEntity<?> filtroServicio(String servicio){
+    @GetMapping(path = "/filtro/{nombre}")
+    public ResponseEntity<?> filtroServicio(@PathVariable("nombre") String servicio){
         if(servicio==null) {
             return ResponseEntity.status(HttpStatus.OK).body(serviceService.findAll());
         }

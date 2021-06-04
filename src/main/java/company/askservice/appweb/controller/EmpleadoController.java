@@ -38,5 +38,4 @@ public class EmpleadoController {
     public List<Empleado> findAllByNombreOrApellidoContains(@PathVariable("nomape") String nomape){
         return serviceEmpleado.findAllByNombreContainsOrApellidoContains(nomape,nomape);
     }
-
 }

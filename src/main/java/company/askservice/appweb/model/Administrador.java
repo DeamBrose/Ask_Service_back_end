@@ -1,13 +1,12 @@
 package company.askservice.appweb.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "administrador")
-@Data
 public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

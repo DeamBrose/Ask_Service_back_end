@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Data
 @Entity
 @Table(name = "usuario")
-@Data
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,5 +34,4 @@ public class Usuario implements Serializable {
 
     @Column(nullable = false, unique = true)
     private String contrasena;
-
 }
