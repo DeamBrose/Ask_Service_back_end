@@ -40,8 +40,6 @@ public class UsuarioService {
         else {
             if (usuariodto.getContrasena().length() < 8)
                 throw new BadRequest("Ingrese correctamente la constraseña (8 digitos)");
-            if (usuariodto.getContrasena().length() > 8)
-                throw new BadRequest("Ingrese correctamente la constraseña (8 digitos)");
             Usuario password = repoUsuario.findByContrasena(usuariodto.getContrasena());
             if (password != null) throw new BadRequest("Contraseña inválida.");
             usuariodto.setContrasena(usuariodto.getContrasena());
@@ -82,8 +80,12 @@ public class UsuarioService {
 
             return new ResponseEntity<>(resp, HttpStatus.OK);
         }else {
-
-            resp.put("Message", "El usuario no existe");
+            if(repoUsuario.existsUsuarioByUsuario(username)) throw new BadRequest("La contraseña es incorrecta.");
+            if(repoUsuario.existsUsuarioByContrasena(password)) throw new BadRequest("El nombre de usuario es incorrecto.");
+            if(!repoUsuario.existsUsuarioByUsuario(username) && !repoUsuario.existsUsuarioByContrasena(password)){
+                resp.put("Error", "La contraseña y el nombre de usuario es incorrecto.");
+                resp.put("Message", "Credenciales no válidas");
+            }
 
             return new ResponseEntity<>(resp, HttpStatus.UNAUTHORIZED);
         }
