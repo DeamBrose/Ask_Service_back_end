@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AdministradorService {
-
     @Autowired
     private AdministradorRepository repoAdmin;
-
 }

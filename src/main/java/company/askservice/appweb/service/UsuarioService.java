@@ -20,13 +20,11 @@ import java.util.Map;
 
 @Service
 public class UsuarioService {
-
     @Autowired
     private UsuarioRepository repoUsuario;
 
     @Autowired
     private RolRepository repoRol;
-
 
     public Usuario RegistrarUsuarioCliente(UsuarioClienteDTO usuariodto) {
         if(usuariodto.getUsuario() == null) throw new BadRequest("Ingrese un nombre.");
@@ -58,7 +56,6 @@ public class UsuarioService {
         Usuario user = MHelpers.modelMapper().map(usuariodto, Usuario.class);
         return repoUsuario.save(user);
     }
-
 
     public List<Usuario> ListarUsuario() {
         return repoUsuario.findAll();

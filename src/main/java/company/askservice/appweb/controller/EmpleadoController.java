@@ -12,10 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/empleado")
 public class EmpleadoController {
-
     @Autowired
     private EmpleadoService serviceEmpleado;
-
 
     @PostMapping("/registrarEmpleado")
     public ResponseEntity<?> create(@RequestBody Empleado empleado){

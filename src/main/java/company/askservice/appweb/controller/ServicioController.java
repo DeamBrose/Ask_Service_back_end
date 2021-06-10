@@ -14,7 +14,6 @@ public class ServicioController {
     @Autowired
     private ServicioService serviceService;
 
-
     @PostMapping("/registrarServicio")
     public ResponseEntity<?> RegistrarService(@RequestBody Servicio servicio){
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceService.saveServicio(servicio));
@@ -32,5 +31,4 @@ public class ServicioController {
     public ResponseEntity<?> findbyId(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(serviceService.FindByIdServicio(id));
     }
-
 }

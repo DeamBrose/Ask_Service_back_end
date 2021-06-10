@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "pago")
 public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +18,9 @@ public class Pago {
     private boolean estado;
 
     @OneToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Cliente clientes;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_servicio")
+    @ManyToOne
     private Servicio servicio;
 
 }
