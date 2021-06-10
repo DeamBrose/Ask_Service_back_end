@@ -8,7 +8,6 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "servicio")
 public class Servicio implements Serializable{
 
     @Id
@@ -24,11 +23,6 @@ public class Servicio implements Serializable{
     @Column(length = 500)
     private String descripcion;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_categoria")
+    @ManyToOne
     private Categoria categoria;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_empleado")
-    private Empleado empleado;
 }

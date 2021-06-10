@@ -8,7 +8,6 @@ import java.util.*;
 
 @Data
 @Entity
-@Table(name = "empleado")
 public class Empleado implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,4 +33,8 @@ public class Empleado implements Serializable{
 
     @Column(length = 5)
     private String estado;
+
+    @ManyToMany
+    private Set<Servicio> servicios;
+
 }

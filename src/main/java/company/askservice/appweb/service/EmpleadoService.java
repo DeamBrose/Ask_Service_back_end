@@ -10,10 +10,8 @@ import java.util.List;
 
 @Service
 public class EmpleadoService {
-
     @Autowired
     private EmpleadoRepository repoEmpleado;
-
 
     @Transactional
     public Empleado saveEmpleado(Empleado empleado) {
@@ -21,7 +19,6 @@ public class EmpleadoService {
     }
 
     //FILTROS
-
     @Transactional(readOnly = true)
     public List<Empleado> ListarEmpleado() {
         return repoEmpleado.findAll();
@@ -37,5 +34,4 @@ public class EmpleadoService {
 
     @Transactional(readOnly = true)
     public List<Empleado> findAllByNombreContainsOrApellidoContains(String nom,String ape) { return repoEmpleado.findAllByNombreContainsOrApellidoContains(nom, ape); }
-
 }

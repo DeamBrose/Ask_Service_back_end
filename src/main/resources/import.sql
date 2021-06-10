@@ -25,15 +25,18 @@ insert into empleado values (null,'Vigo Del Valle','lalalaalalalala','75615422',
 insert into empleado values (null,'Briones Ayala','lalalaalalalala','75569232','ayalaFelix@gmail.com','false','Felix','956225336');
 insert into empleado values (null,'Varas Andreu','lalalaalalalala','75112145','sofiaandreu@gmail.com','false','Sofia','911659449');
 
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Mantenimiento',50.00,1,1);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Instalación de Windows',50.00,2,2);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Instalación de Linux',50.00,2,3);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Instalación de Sistemas Operativos',50.00,2,4);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Recuperación de datos',70.00,2,5);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Reparación',50.00,1,6);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Armado de computadoras',50.00,1,7);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Soporte Técnico',50.00, 1,8);
-insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Cambio de componentes',50.00, 1,1);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Mantenimiento',50.00,1);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Instalación de Windows',50.00,2);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Instalación de Linux',50.00,2);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Instalación de Sistemas Operativos',50.00,2);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Recuperación de datos',70.00,2);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Reparación',50.00,1);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Armado de computadoras',50.00,1);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Soporte Técnico',50.00,1);
+insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Cambio de componentes',50.00,1);
+
+insert into empleado_servicios values (1,1);
+
 
 insert into administrador values (null, 'Paul Lorem', 'Rojas Castillo');
 insert into administrador values (null, 'Lorenzo Deam', 'Ambrose Leiya');

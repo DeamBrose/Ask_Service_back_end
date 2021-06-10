@@ -6,14 +6,12 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "detallepago")
 public class DetallePago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "id_pago", referencedColumnName = "id")
     private Pago pago;
 
     @Column(length = 200)
@@ -21,5 +19,4 @@ public class DetallePago {
 
     @Column
     private double importe;
-
 }
