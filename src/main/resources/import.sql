@@ -35,7 +35,7 @@ insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Armado 
 insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Soporte Técnico',50.00,1);
 insert into servicio values (null,'Descripcion lalalalalalalalalaalala','Cambio de componentes',50.00,1);
 
-insert into empleado_servicios values (1,1);
+insert into empleado_servicios values (null, 1,1);
 
 
 insert into administrador values (null, 'Paul Lorem', 'Rojas Castillo');

@@ -31,4 +31,10 @@ public class ServicioController {
     public ResponseEntity<?> findbyId(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(serviceService.FindByIdServicio(id));
     }
+
+    @GetMapping("/lista")
+    public ResponseEntity<?> findAllService(){
+        return ResponseEntity.status(HttpStatus.OK).body(serviceService.findAll());
+    }
+
 }
