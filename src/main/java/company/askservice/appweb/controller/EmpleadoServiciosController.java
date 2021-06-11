@@ -19,4 +19,9 @@ public class EmpleadoServiciosController {
     public ResponseEntity<?> FindAll(){
         return ResponseEntity.status(HttpStatus.OK).body(serviceEmpleadoService.findAll());
     }
+
+    @GetMapping("/filtroservicio")
+    public ResponseEntity<?> FiltroServicio(String nombre){
+        return ResponseEntity.status(HttpStatus.OK).body(serviceEmpleadoService.FiltroServicios(nombre));
+    }
 }

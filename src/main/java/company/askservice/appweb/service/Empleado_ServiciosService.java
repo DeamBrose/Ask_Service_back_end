@@ -19,4 +19,10 @@ public class Empleado_ServiciosService {
         if(list.isEmpty()) throw new NotFound("No existen registros.");
         return list;
     }
+
+    public List<?> FiltroServicios(String nombre){
+        List<Empleado_Servicios> lista = repoEmpleadoService.findAllByServicioNombreContains(nombre);
+        if(lista.isEmpty()) throw new NotFound("No se encontraron coincidencias.");
+        return lista;
+    }
 }
