@@ -10,8 +10,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsuarioLoginDTO implements Serializable {
-
     private String usuario;
     private String contrasena;
-
 }

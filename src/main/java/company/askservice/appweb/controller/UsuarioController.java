@@ -1,6 +1,7 @@
 package company.askservice.appweb.controller;
 
 import company.askservice.appweb.Utils.other.UsuarioClienteDTO;
+import company.askservice.appweb.Utils.other.UsuarioEmpleadoDTO;
 import company.askservice.appweb.Utils.other.UsuarioLoginDTO;
 import company.askservice.appweb.model.Usuario;
 import company.askservice.appweb.service.UsuarioService;
@@ -26,6 +27,12 @@ public class UsuarioController {
     public  ResponseEntity<?> RegistrarUsuarioCliente(@RequestBody UsuarioClienteDTO clientedto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceUsuario.RegistrarUsuarioCliente(clientedto));
     }
+
+    @PostMapping("/registrar/userEmpleado")
+    public  ResponseEntity<?> RegistrarUsuarioEmpleado(@RequestBody UsuarioEmpleadoDTO empleadodto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(serviceUsuario.RegistrarUsuarioEmpleado(empleadodto));
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> UsuarioLogin(@RequestBody UsuarioLoginDTO userlogin){
         return serviceUsuario.Login(userlogin);

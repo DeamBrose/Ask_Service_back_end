@@ -17,8 +17,14 @@ public class EmpleadoController {
 
     @PostMapping("/registrarEmpleado")
     public ResponseEntity<?> create(@RequestBody Empleado empleado){
-        return ResponseEntity.status(HttpStatus.CREATED).body(serviceEmpleado.saveEmpleado(empleado));
+        return ResponseEntity.status(HttpStatus.CREATED).body(serviceEmpleado.RegistrarEmpleado(empleado));
     }
+
+    @GetMapping("/{id}")
+    public Empleado obtenerEmpleado(@PathVariable("id") Long id){
+        return serviceEmpleado.findByEmpleadoId(id);
+    }
+
 
     //FILTROS
     @GetMapping("/listar")

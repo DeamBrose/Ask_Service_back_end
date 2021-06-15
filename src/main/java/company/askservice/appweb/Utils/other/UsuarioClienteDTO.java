@@ -12,11 +12,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsuarioClienteDTO implements Serializable {
-
     private Long id;
     private String usuario;
     private String contrasena;
     private Cliente cliente;
     private Rol rol;
-
 }
