@@ -38,8 +38,8 @@ public class EmpleadoController {
     @GetMapping("/listarempleinactivo")
     public List<Empleado> listaempleadoInactivo(){ return serviceEmpleado.ListarEmpleadoInactivo(); }
 
-    @GetMapping(path = "/listaremplepornomape/{nomape}")
-    public List<Empleado> findAllByNombreOrApellidoContains(@PathVariable("nomape") String nomape){
+    @GetMapping( "/listaremplepornomape")
+    public List<Empleado> findAllByNombreOrApellidoContains(String nomape){
         return serviceEmpleado.findAllByNombreContainsOrApellidoContains(nomape,nomape);
     }
 }

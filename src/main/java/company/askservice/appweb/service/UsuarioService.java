@@ -118,7 +118,6 @@ public class UsuarioService {
                 resp.put("Error", "La contraseña y el nombre de usuario es incorrecto.");
                 resp.put("Message", "Credenciales no válidas");
             }
-
             return new ResponseEntity<>(resp, HttpStatus.UNAUTHORIZED);
         }
     }

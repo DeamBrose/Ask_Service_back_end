@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Empleado_ServiciosService {
@@ -25,4 +26,6 @@ public class Empleado_ServiciosService {
         if(lista.isEmpty()) throw new NotFound("No se encontraron coincidencias.");
         return lista;
     }
+
+    public Empleado_Servicios obtenerEmpleado_Servicios(Long id){return repoEmpleadoService.findById(id).orElse(null);}
 }
