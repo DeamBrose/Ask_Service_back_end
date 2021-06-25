@@ -6,13 +6,13 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class DetallePago {
+public class DetallePedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
-    private Pago pago;
+    private Pedido pedido;
 
     @Column(length = 200)
     private String direccion;

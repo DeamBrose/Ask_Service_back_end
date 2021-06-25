@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface Empleado_ServiciosRepository extends JpaRepository<Empleado_Servicios, Long> {
     public List<Empleado_Servicios> findAllByServicioNombreContains(String nombre);
+    public Empleado_Servicios findEmpleado_ServiciosByServicioId(Long id);
 }

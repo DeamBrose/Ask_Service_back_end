@@ -3,19 +3,24 @@ package company.askservice.appweb.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
-public class Pago {
+public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 10)
-    private String fechaPago;
+    @PrePersist
+    void Prepersist(){
+        fechaC = new Date();
+    }
+    @Temporal(TemporalType.DATE)
+    private Date fechaC;
 
     @Column
-    private boolean estado;
+    private String estado;
 
     @OneToOne
     private Cliente clientes;
@@ -23,4 +28,9 @@ public class Pago {
     @ManyToOne
     private Servicio servicio;
 
+    @Column
+    private String empleado;
+
+    @Column
+    private String descripcion;
 }

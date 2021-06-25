@@ -46,3 +46,5 @@ insert into administrador values (null, 'Paul Lorem', 'Rojas Castillo');
 insert into administrador values (null, 'Lorenzo Deam', 'Ambrose Leiya');
 
 insert into usuario values (null,'admin001', 'admin01', 1, null,null,2);
+insert into usuario values (null,'empleado01', 'empleado01', null, null,1,1);
+insert into usuario values (null,'empleado02', 'empleado02', null, null,2,1);
