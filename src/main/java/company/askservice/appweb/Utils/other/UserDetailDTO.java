@@ -19,4 +19,5 @@ public class UserDetailDTO implements Serializable {
     private Empleado empleado;
     private Cliente cliente;
     private Rol rol;
+    private String usuario;
 }
