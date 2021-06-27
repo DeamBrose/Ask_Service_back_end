@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class PagoService {
+public class PedidoService {
 
     @Autowired
-    private PagoRepository repoPago;
+    private PedidoRepository repoPedido;
 
     @Autowired
     private ClienteRepository repoCliente;
@@ -44,19 +44,25 @@ public class PagoService {
         pago.setEstado("Pendiente");
         pago.setEmpleado(usuario.getUsuario());
         pago.setDescripcion(pagoDTO.getDescripcion());
-        repoPago.save(pago);
+        repoPedido.save(pago);
 
         respon.put("Message", "Realizado correctamente");
         return new ResponseEntity<>(respon ,HttpStatus.OK);
     }
 
-    public List<Pedido> findAllPago(){
-        return repoPago.findAll();
+    public List<Pedido> findAllPedido(){
+        return repoPedido.findAll();
     }
 
-    public List<?> FiltroPago(String empleado){
-        List<Pedido> list = repoPago.findAllByEmpleado(empleado);
+    public List<?> FiltroPedido(String empleado){
+        List<Pedido> list = repoPedido.findAllByEmpleado(empleado);
         if(list.isEmpty()) throw new NotFound("Aún no tiene servicios pendientes.");
         return list;
+    }
+
+    public Pedido BuscarPedidoForId(Long id){
+        Pedido pedido = repoPedido.findPedidoById(id);
+        if(pedido == null) throw new NotFound("No existe el pedido");
+        return pedido;
     }
 }

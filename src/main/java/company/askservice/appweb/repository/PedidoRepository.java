@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PagoRepository extends JpaRepository<Pedido, Long> {
+public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     public List<Pedido> findAllByEmpleado(String empleado);
+    public Pedido findPedidoById(Long id);
 }

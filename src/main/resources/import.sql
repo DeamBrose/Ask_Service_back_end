@@ -11,7 +11,7 @@ insert into categoria values (null, 'categoria03');
 insert into categoria values (null,'Hardware');
 insert into categoria values (null,'Software');
 
-insert into rol values (null,'USER');
+insert into rol values (null,'EMPLEADO');
 insert into rol values (null,'ADMIN');
 insert into rol values (null,'CLIENTE');
 
