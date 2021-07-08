@@ -1,12 +1,20 @@
 package company.askservice.appweb.service;
 
+import company.askservice.appweb.Utils.other.ClienteDTO;
 import company.askservice.appweb.config.Error.exceptions.BadRequest;
 import company.askservice.appweb.model.Cliente;
 import company.askservice.appweb.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ClienteService {
@@ -22,13 +30,13 @@ public class ClienteService {
         if(cliente.getApellido() == null) throw new BadRequest("Ingrese su apellido");
         cliente.setApellido(cliente.getApellido());
 
-        if(cliente.getDirección().isEmpty()) throw new BadRequest("Ingrese su dirección");
-        if(cliente.getDirección() == null) throw new BadRequest("Ingrese su dirección");
-        cliente.setDirección(cliente.getDirección());
+        if(cliente.getDireccion().isEmpty()) throw new BadRequest("Ingrese su dirección");
+        if(cliente.getDireccion() == null) throw new BadRequest("Ingrese su dirección");
+        cliente.setDireccion(cliente.getDireccion());
 
         if(cliente.getEmail().isEmpty()) throw new BadRequest("Ingrese su email");
         if(cliente.getEmail() == null) throw new BadRequest("Ingrese su email");
-        cliente.setEmail(cliente.getDirección());
+        cliente.setEmail(cliente.getDireccion());
 
         if(cliente.getTelefono().isEmpty()) throw new BadRequest("Ingrese su Nº telefónico");
         if(cliente.getTelefono() == null) throw new BadRequest("Ingrese su Nº telefónico");
@@ -47,5 +55,22 @@ public class ClienteService {
         List<Cliente> list = repoCliente.findAll();
         if(list.isEmpty()) throw new BadRequest("No se encontró registros en la lista");
         return list;
+    }
+
+    public ResponseEntity<?> UpdateCliente(ClienteDTO clienteDTO){
+        Map<String, Object> respon = new HashMap<>();
+        Cliente cliente = repoCliente.findClienteById(clienteDTO.getId());
+
+        cliente.setEmail(clienteDTO.getEmail());
+
+        if(clienteDTO.getTelefono().length() < 9)throw new BadRequest("9 dígitos.");
+        if(clienteDTO.getTelefono().length() > 9)throw new BadRequest("9 dígitos.");
+        cliente.setTelefono(clienteDTO.getTelefono());
+
+        cliente.setDireccion(clienteDTO.getDireccion());
+
+        repoCliente.save(cliente);
+        respon.put("Message", "Guardado");
+        return new ResponseEntity<>(respon, HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package company.askservice.appweb.controller;
 
+import company.askservice.appweb.Utils.other.EmpleadoDTO;
 import company.askservice.appweb.model.Empleado;
 import company.askservice.appweb.service.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,10 @@ public class EmpleadoController {
     @GetMapping( "/listaremplepornomape")
     public List<Empleado> findAllByNombreOrApellidoContains(String nomape){
         return serviceEmpleado.findAllByNombreContainsOrApellidoContains(nomape,nomape);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> UpdateDatos(@RequestBody EmpleadoDTO empleadoDTO){
+        return serviceEmpleado.UpdateDatosEmpleado(empleadoDTO);
     }
 }

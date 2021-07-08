@@ -25,7 +25,7 @@ public class Cliente {
     private String telefono;
 
     @Column(length = 200)
-    private String dirección;
+    private String direccion;
 
 }
 

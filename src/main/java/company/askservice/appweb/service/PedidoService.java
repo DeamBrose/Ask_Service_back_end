@@ -65,4 +65,13 @@ public class PedidoService {
         if(pedido == null) throw new NotFound("No existe el pedido");
         return pedido;
     }
+
+    public ResponseEntity<?> ChangeStatusPedido(Long idPedido){
+        Map<String, Object> respon = new HashMap<>();
+        Pedido pedido = repoPedido.findPedidoById(idPedido);
+        pedido.setEstado("Realizado");
+        repoPedido.save(pedido);
+        respon.put("Message", "Exitoso");
+        return new ResponseEntity<>(respon, HttpStatus.OK);
+    }
 }

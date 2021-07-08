@@ -1,14 +1,19 @@
 package company.askservice.appweb.service;
 
+import company.askservice.appweb.Utils.other.EmpleadoDTO;
 import company.askservice.appweb.config.Error.exceptions.BadRequest;
 import company.askservice.appweb.config.Error.exceptions.NotFound;
 import company.askservice.appweb.model.Empleado;
 import company.askservice.appweb.repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmpleadoService {
@@ -38,19 +43,37 @@ public class EmpleadoService {
     }
 
     //FILTROS
-    @Transactional(readOnly = true)
+
     public List<Empleado> ListarEmpleado() {
         return repoEmpleado.findAll();
     }
 
-    @Transactional(readOnly = true)
-    public List<Empleado> ListarEmpleadoActivo() { return repoEmpleado.findAllByEstadoEquals("true"); }
+    public List<Empleado> ListarEmpleadoActivo() {
+        return repoEmpleado.findAllByEstadoEquals("true");
+    }
 
-    @Transactional(readOnly = true)
     public List<Empleado> ListarEmpleadoInactivo() {
         return repoEmpleado.findAllByEstadoEquals("false");
     }
 
-    @Transactional(readOnly = true)
-    public List<Empleado> findAllByNombreContainsOrApellidoContains(String nom,String ape) { return repoEmpleado.findAllByNombreContainsOrApellidoContains(nom, ape); }
+    public List<Empleado> findAllByNombreContainsOrApellidoContains(String nom,String ape) {
+        return repoEmpleado.findAllByNombreContainsOrApellidoContains(nom, ape);
+    }
+
+    public ResponseEntity<?> UpdateDatosEmpleado(EmpleadoDTO empleadoDTO){
+        Map<String, Object> respon = new HashMap<>();
+        Empleado empleado = repoEmpleado.findEmpleadoById(empleadoDTO.getId());
+
+        empleado.setEmail(empleadoDTO.getEmail());
+
+        empleado.setDescripcion(empleadoDTO.getDescripcion());
+
+        if(empleadoDTO.getTelefono().length() < 9) throw new BadRequest("Solo 9 dígitos");
+        if(empleadoDTO.getTelefono().length() > 9) throw new BadRequest("Solo 9 dígitos");
+        empleado.setTelefono(empleadoDTO.getTelefono());
+
+        repoEmpleado.save(empleado);
+        respon.put("Message", "Guardado");
+        return new ResponseEntity<>(respon, HttpStatus.OK);
+    }
 }

@@ -33,4 +33,9 @@ public class PedidoController {
     public ResponseEntity<?> BuscarForId(Long id){
         return ResponseEntity.status(HttpStatus.OK).body(servicePedido.BuscarPedidoForId(id));
     }
+
+    @PostMapping("/statusPedido")
+    public ResponseEntity<?> ChangeStatusPedido(Long idPedido){
+        return servicePedido.ChangeStatusPedido(idPedido);
+    }
 }
