@@ -7,4 +7,5 @@ public class ClienteDTO {
     private String email;
     private String telefono;
     private String direccion;
+    private String img;
 }

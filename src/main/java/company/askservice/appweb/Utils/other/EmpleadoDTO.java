@@ -7,4 +7,5 @@ public class EmpleadoDTO {
     private String email;
     private String descripcion;
     private String telefono;
+    private String img;
 }

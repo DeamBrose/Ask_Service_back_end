@@ -5,12 +5,9 @@ import company.askservice.appweb.config.Error.exceptions.BadRequest;
 import company.askservice.appweb.model.Cliente;
 import company.askservice.appweb.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -69,8 +66,16 @@ public class ClienteService {
 
         cliente.setDireccion(clienteDTO.getDireccion());
 
-        repoCliente.save(cliente);
-        respon.put("Message", "Guardado");
+        if(clienteDTO.getImg().isEmpty()){
+            repoCliente.save(cliente);
+            respon.put("Message", "Guardado");
+        }else {
+            if(!clienteDTO.getImg().isEmpty()){
+                cliente.setImg(clienteDTO.getImg());
+                repoCliente.save(cliente);
+                respon.put("Message", "Guardado");
+            }
+        }
         return new ResponseEntity<>(respon, HttpStatus.OK);
     }
 }

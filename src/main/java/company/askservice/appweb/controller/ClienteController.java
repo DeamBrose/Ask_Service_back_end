@@ -24,7 +24,7 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceCliente.RegistrarCliente(cliente));
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<?> updateDatoCliente(@RequestBody ClienteDTO clienteDTO){
         return serviceCliente.UpdateCliente(clienteDTO);
     }

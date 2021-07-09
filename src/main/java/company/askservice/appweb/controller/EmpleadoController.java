@@ -44,7 +44,7 @@ public class EmpleadoController {
         return serviceEmpleado.findAllByNombreContainsOrApellidoContains(nomape,nomape);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<?> UpdateDatos(@RequestBody EmpleadoDTO empleadoDTO){
         return serviceEmpleado.UpdateDatosEmpleado(empleadoDTO);
     }

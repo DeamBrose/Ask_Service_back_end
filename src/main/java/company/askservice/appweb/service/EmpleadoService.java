@@ -72,8 +72,16 @@ public class EmpleadoService {
         if(empleadoDTO.getTelefono().length() > 9) throw new BadRequest("Solo 9 dígitos");
         empleado.setTelefono(empleadoDTO.getTelefono());
 
-        repoEmpleado.save(empleado);
-        respon.put("Message", "Guardado");
+        if(empleadoDTO.getImg().isEmpty()){
+            repoEmpleado.save(empleado);
+            respon.put("Message", "Guardado");
+        }else {
+            if(!empleadoDTO.getImg().isEmpty()){
+                empleado.setImg(empleadoDTO.getImg());
+                repoEmpleado.save(empleado);
+                respon.put("Message", "Guardado");
+            }
+        }
         return new ResponseEntity<>(respon, HttpStatus.OK);
     }
 }
