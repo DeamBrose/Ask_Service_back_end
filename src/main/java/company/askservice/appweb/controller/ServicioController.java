@@ -37,4 +37,18 @@ public class ServicioController {
         return ResponseEntity.status(HttpStatus.OK).body(serviceService.findAll());
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<?> updateServicio(@RequestBody Servicio servicio){
+        return serviceService.updateServicio(servicio);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> deleteServicio(@PathVariable Long id){
+        return serviceService.deleteServicio(id);
+    }
+
+    @DeleteMapping("/deleteByIDservicioAndIDempleado")
+    public ResponseEntity<?> deleteServicio2(Long idserv, Long idemple){
+        return serviceService.deleteServicio2(idserv,idemple);
+    }
 }

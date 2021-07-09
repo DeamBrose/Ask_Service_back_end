@@ -27,5 +27,13 @@ public class Empleado_ServiciosService {
         return lista;
     }
 
+    public Empleado_Servicios CreateEmpleadoServicio(Empleado_Servicios empleado_servicios){
+        return repoEmpleadoService.save(empleado_servicios);
+    }
+
+    public void deleteEmpleadoServicioByEmpleadoAndServicio(Long IDempleado, Long IDservicio){
+        repoEmpleadoService.deleteByEmpleado_IdAndServicio_Id(IDempleado,IDservicio);
+    }
+
     public Empleado_Servicios obtenerEmpleado_Servicios(Long id){return repoEmpleadoService.findById(id).orElse(null);}
 }

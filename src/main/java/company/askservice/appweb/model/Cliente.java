@@ -27,5 +27,7 @@ public class Cliente {
     @Column(length = 200)
     private String direccion;
 
+    private String img;
+
 }
 

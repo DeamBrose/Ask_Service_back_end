@@ -34,4 +34,5 @@ public class Empleado implements Serializable{
     @Column(length = 5)
     private String estado;
 
+    private String img;
 }
