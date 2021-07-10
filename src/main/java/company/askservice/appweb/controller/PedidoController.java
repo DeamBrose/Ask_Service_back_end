@@ -38,4 +38,8 @@ public class PedidoController {
     public ResponseEntity<?> ChangeStatusPedido(Long idPedido){
         return servicePedido.ChangeStatusPedido(idPedido);
     }
+    @GetMapping("/buscarPedidoBy/{idCliente}")
+    public ResponseEntity<?> SearchPedidoByClienteId(@PathVariable Long idCliente){
+        return ResponseEntity.status(HttpStatus.OK).body(servicePedido.findPedidoForIdCliente(idCliente));
+    }
 }

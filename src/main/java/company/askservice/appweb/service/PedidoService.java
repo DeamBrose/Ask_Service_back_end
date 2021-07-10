@@ -74,4 +74,9 @@ public class PedidoService {
         respon.put("Message", "Exitoso");
         return new ResponseEntity<>(respon, HttpStatus.OK);
     }
+
+    public List<Pedido> findPedidoForIdCliente(Long idCliente){
+        List<Pedido> pedidos = repoPedido.findAllByClientesId(idCliente);
+        return pedidos;
+    }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     public List<Pedido> findAllByEmpleado(String empleado);
     public Pedido findPedidoById(Long id);
+    public List<Pedido> findAllByClientesId(Long id);
 }
