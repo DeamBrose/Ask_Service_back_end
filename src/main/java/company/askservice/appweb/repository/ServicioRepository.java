@@ -11,4 +11,5 @@ import java.util.List;
 public interface ServicioRepository extends JpaRepository<Servicio, Long> {
     public List<Servicio> findByNombreLike(String servicio);
     public Servicio findServicioById(Long id);
+    public List<Servicio> findAllByCategoriaId(Long id);
 }

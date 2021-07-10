@@ -51,4 +51,9 @@ public class ServicioController {
     public ResponseEntity<?> deleteServicio2(Long idserv, Long idemple){
         return serviceService.deleteServicio2(idserv,idemple);
     }
+
+    @GetMapping("buscarServicio/{idCategoria}")
+    public ResponseEntity<?> FindServicioByCategoriaId(@PathVariable Long idCategoria){
+        return ResponseEntity.status(HttpStatus.OK).body(serviceService.findServicioByCategoriaId(idCategoria));
+    }
 }

@@ -102,5 +102,8 @@ public class ServicioService {
         }
     }
 
-
+    public List<Servicio> findServicioByCategoriaId(Long idCategoria){
+        List<Servicio> servicios = repoService.findAllByCategoriaId(idCategoria);
+        return servicios;
+    }
 }
