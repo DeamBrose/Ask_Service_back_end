@@ -78,4 +78,9 @@ public class ClienteService {
         }
         return new ResponseEntity<>(respon, HttpStatus.OK);
     }
+
+    public Cliente findClienteById(Long id){
+        Cliente cliente = repoCliente.findClienteById(id);
+        return cliente;
+    }
 }

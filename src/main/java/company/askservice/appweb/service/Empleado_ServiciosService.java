@@ -35,5 +35,12 @@ public class Empleado_ServiciosService {
         repoEmpleadoService.deleteByEmpleado_IdAndServicio_Id(IDempleado,IDservicio);
     }
 
-    public Empleado_Servicios obtenerEmpleado_Servicios(Long id){return repoEmpleadoService.findById(id).orElse(null);}
+    public Empleado_Servicios obtenerEmpleado_Servicios(Long id){
+        return repoEmpleadoService.findById(id).orElse(null);
+    }
+
+    public List<Empleado_Servicios> FindServicioByEmpleado(Long id){
+        List<Empleado_Servicios> servicios = repoEmpleadoService.findAllByEmpleadoId(id);
+        return servicios;
+    }
 }

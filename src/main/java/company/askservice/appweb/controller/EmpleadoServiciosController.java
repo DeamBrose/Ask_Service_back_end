@@ -19,8 +19,8 @@ public class EmpleadoServiciosController {
         return ResponseEntity.status(HttpStatus.OK).body(serviceEmpleadoService.findAll());
     }
 
-    @GetMapping(path="/lista/{id}")
-    public ResponseEntity<?> findById(@PathVariable("id") Long id){
+    @GetMapping(path="/buscar")
+    public ResponseEntity<?> findById(Long id){
         return ResponseEntity.status(HttpStatus.OK).body(serviceEmpleadoService.obtenerEmpleado_Servicios(id));
     }
 
@@ -32,5 +32,10 @@ public class EmpleadoServiciosController {
     @PostMapping("/crear")
     public ResponseEntity<?> createEmpleadoServicio(@RequestBody Empleado_Servicios empleado_servicios){
         return ResponseEntity.status(HttpStatus.CREATED).body(serviceEmpleadoService.CreateEmpleadoServicio(empleado_servicios));
+    }
+
+    @GetMapping("/buscarServicio/{idEmpleado}")
+    public ResponseEntity<?> SearchService(@PathVariable Long idEmpleado){
+        return ResponseEntity.status(HttpStatus.OK).body(serviceEmpleadoService.FindServicioByEmpleado(idEmpleado));
     }
 }
