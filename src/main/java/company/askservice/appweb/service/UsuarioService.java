@@ -68,6 +68,7 @@ public class UsuarioService {
     }
 
     public Usuario RegistrarUsuarioEmpleado(UsuarioEmpleadoDTO usuarioEmpleadoDTO) {
+
         if(usuarioEmpleadoDTO.getEmpleado().getId() == 0) throw new BadRequest("Seleccione el valor.");
         if(usuarioEmpleadoDTO.getEmpleado() == null) throw new BadRequest("Seleccione el valor.");
         Usuario empleado = repoUsuario.findByEmpleado_Id(usuarioEmpleadoDTO.getEmpleado().getId());
@@ -83,7 +84,7 @@ public class UsuarioService {
         String apellido = empleadoObtenido.getApellido();
         String nombre = empleadoObtenido.getNombre();
 
-        String username = ObtenerprimeraPalabra(apellido)+ObtenerprimeraPalabra(nombre)+empleadoObtenido.getId();
+        String username = ObtenerprimeraPalabra(apellido)+ObtenerprimeraPalabra(nombre)+ObtenerDosPrimerosNumerosDNI(empleadoObtenido.getDni());
         String password = ObtenerprimeraLetraPalabra(apellido)+ empleadoObtenido.getDni();
 
         Usuario usuario = repoUsuario.findByUsuario(username);
@@ -131,5 +132,12 @@ public class UsuarioService {
     public String ObtenerprimeraLetraPalabra(String palabra){
         String word = String.valueOf(palabra.charAt(0));
         return word;
+    }
+
+    public String ObtenerDosPrimerosNumerosDNI(String dni){
+        String numero1 = String.valueOf(dni.charAt(0));
+        String numero2 = String.valueOf(dni.charAt(1));
+        String valor = numero1+numero2;
+        return valor;
     }
 }
