@@ -109,7 +109,7 @@ public class UsuarioService {
         if(repoUsuario.existsUsuarioByUsuarioAndContrasena(username, password)){
             Usuario userlog = repoUsuario.findByUsuario(username);
             UserDetailDTO userDetailDTO = MHelpers.modelMapper().map(userlog, UserDetailDTO.class);
-            resp.put("Message", "Credenciales válidas");
+            resp.put("message", "Credenciales válidas");
             resp.put("Usuario", userDetailDTO);
             return new ResponseEntity<>(resp, HttpStatus.OK);
         }else {
@@ -117,7 +117,7 @@ public class UsuarioService {
             if(repoUsuario.existsUsuarioByContrasena(password)) throw new BadRequest("El nombre de usuario es incorrecto.");
             if(!repoUsuario.existsUsuarioByUsuario(username) && !repoUsuario.existsUsuarioByContrasena(password)){
                 resp.put("Error", "La contraseña y el nombre de usuario es incorrecto.");
-                resp.put("Message", "Credenciales no válidas");
+                resp.put("message", "Credenciales no válidas");
             }
             return new ResponseEntity<>(resp, HttpStatus.UNAUTHORIZED);
         }
