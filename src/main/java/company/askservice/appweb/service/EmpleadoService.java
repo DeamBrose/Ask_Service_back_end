@@ -1,6 +1,7 @@
 package company.askservice.appweb.service;
 
 import company.askservice.appweb.Utils.other.EmpleadoDTO;
+import company.askservice.appweb.Utils.other.UsuarioEmpleadoDTO;
 import company.askservice.appweb.config.Error.exceptions.BadRequest;
 import company.askservice.appweb.config.Error.exceptions.NotFound;
 import company.askservice.appweb.model.Empleado;
@@ -20,7 +21,13 @@ public class EmpleadoService {
     @Autowired
     private EmpleadoRepository repoEmpleado;
 
-    public Empleado RegistrarEmpleado(Empleado empleado){
+    private final UsuarioService usuarioService;
+
+    public EmpleadoService(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
+
+    public void RegistrarEmpleado(Empleado empleado){
         if(empleado.getNombre().isEmpty()) throw new BadRequest("Ingrese el nombre");
         if(empleado.getNombre() == null) throw new BadRequest("Ingrese el nombre");
         empleado.setNombre(empleado.getNombre());
@@ -34,7 +41,19 @@ public class EmpleadoService {
         empleado.setDni(empleado.getDni());
 
         empleado.setEstado("True");
-        return repoEmpleado.save(empleado);
+
+        repoEmpleado.save(empleado);
+
+        String apellido = empleado.getApellido();
+        String nombre = empleado.getNombre();
+        String dni = empleado.getDni();
+
+        String username = ObtenerprimeraPalabra(apellido)+ObtenerprimeraPalabra(nombre)+ObtenerDosPrimerosNumerosDNI(dni);
+        String password = ObtenerprimeraLetraPalabra(apellido)+ dni;
+
+        UsuarioEmpleadoDTO usuarioEmpleadoDTO = new UsuarioEmpleadoDTO(username,password,empleado);
+
+        usuarioService.RegistrarUsuarioEmpleado(usuarioEmpleadoDTO);
     }
 
     public Empleado findByEmpleadoId(Long id){
@@ -83,5 +102,23 @@ public class EmpleadoService {
             }
         }
         return new ResponseEntity<>(respon, HttpStatus.OK);
+    }
+
+    private String ObtenerprimeraPalabra(String palabra) {
+        String arr[] = palabra.split(" ", 2);
+        String firstWord = arr[0];
+        return firstWord;
+    }
+
+    public String ObtenerprimeraLetraPalabra(String palabra){
+        String word = String.valueOf(palabra.charAt(0));
+        return word;
+    }
+
+    public String ObtenerDosPrimerosNumerosDNI(String dni){
+        String numero1 = String.valueOf(dni.charAt(0));
+        String numero2 = String.valueOf(dni.charAt(1));
+        String valor = numero1+numero2;
+        return valor;
     }
 }

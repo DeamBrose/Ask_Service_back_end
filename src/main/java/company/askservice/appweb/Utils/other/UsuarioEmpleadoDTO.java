@@ -13,9 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UsuarioEmpleadoDTO implements Serializable {
-    private Long id;
     private String usuario;
     private String contrasena;
     private Empleado empleado;
-    private Rol rol;
 }

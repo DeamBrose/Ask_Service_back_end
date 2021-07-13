@@ -17,8 +17,8 @@ public class EmpleadoController {
     private EmpleadoService serviceEmpleado;
 
     @PostMapping("/registrarEmpleado")
-    public ResponseEntity<?> create(@RequestBody Empleado empleado){
-        return ResponseEntity.status(HttpStatus.CREATED).body(serviceEmpleado.RegistrarEmpleado(empleado));
+    public void create(@RequestBody Empleado empleado){
+         serviceEmpleado.RegistrarEmpleado(empleado);
     }
 
     @GetMapping("/{id}")

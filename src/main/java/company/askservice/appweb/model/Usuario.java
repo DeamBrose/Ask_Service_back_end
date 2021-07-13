@@ -21,7 +21,7 @@ public class Usuario implements Serializable {
     @OneToOne
     private Cliente cliente;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Rol rol;
 
     @Column(nullable = false, unique = true)

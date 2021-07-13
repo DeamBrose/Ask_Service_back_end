@@ -26,13 +26,6 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository repoUsuario;
 
-    private final EmpleadoService empleadoService;
-
-    public UsuarioService(EmpleadoService empleadoService) {
-        this.empleadoService = empleadoService;
-    }
-
-
     @Autowired
     private RolRepository repoRol;
 
@@ -68,31 +61,11 @@ public class UsuarioService {
     }
 
     public Usuario RegistrarUsuarioEmpleado(UsuarioEmpleadoDTO usuarioEmpleadoDTO) {
-
-        if(usuarioEmpleadoDTO.getEmpleado().getId() == 0) throw new BadRequest("Seleccione el valor.");
-        if(usuarioEmpleadoDTO.getEmpleado() == null) throw new BadRequest("Seleccione el valor.");
         Usuario empleado = repoUsuario.findByEmpleado_Id(usuarioEmpleadoDTO.getEmpleado().getId());
         if(empleado!=null) throw new BadRequest("El empleado ya tiene una cuenta.");
         usuarioEmpleadoDTO.setEmpleado(usuarioEmpleadoDTO.getEmpleado());
-        Empleado empleadoObtenido =  empleadoService.findByEmpleadoId(usuarioEmpleadoDTO.getEmpleado().getId());
-
-        if(usuarioEmpleadoDTO.getRol() == null || usuarioEmpleadoDTO.getRol().getId() == 0){
-            Rol rolempleado = repoRol.findByTipoRol("USER");
-            usuarioEmpleadoDTO.setRol(rolempleado);
-        }
-
-        String apellido = empleadoObtenido.getApellido();
-        String nombre = empleadoObtenido.getNombre();
-
-        String username = ObtenerprimeraPalabra(apellido)+ObtenerprimeraPalabra(nombre)+ObtenerDosPrimerosNumerosDNI(empleadoObtenido.getDni());
-        String password = ObtenerprimeraLetraPalabra(apellido)+ empleadoObtenido.getDni();
-
-        Usuario usuario = repoUsuario.findByUsuario(username);
-        if(usuario!=null) throw new BadRequest("El usuario ingresado ya existe.");
-        usuarioEmpleadoDTO.setUsuario(username);
-        usuarioEmpleadoDTO.setContrasena(password);
-
         Usuario user = MHelpers.modelMapper().map(usuarioEmpleadoDTO, Usuario.class);
+        user.setRol(new Rol(null,"USER"));
         return repoUsuario.save(user);
     }
 
@@ -121,23 +94,5 @@ public class UsuarioService {
             }
             return new ResponseEntity<>(resp, HttpStatus.UNAUTHORIZED);
         }
-    }
-
-    private String ObtenerprimeraPalabra(String palabra) {
-        String arr[] = palabra.split(" ", 2);
-        String firstWord = arr[0];
-        return firstWord;
-    }
-
-    public String ObtenerprimeraLetraPalabra(String palabra){
-        String word = String.valueOf(palabra.charAt(0));
-        return word;
-    }
-
-    public String ObtenerDosPrimerosNumerosDNI(String dni){
-        String numero1 = String.valueOf(dni.charAt(0));
-        String numero2 = String.valueOf(dni.charAt(1));
-        String valor = numero1+numero2;
-        return valor;
     }
 }
