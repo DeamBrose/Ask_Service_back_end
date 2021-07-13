@@ -65,7 +65,8 @@ public class UsuarioService {
         if(empleado!=null) throw new BadRequest("El empleado ya tiene una cuenta.");
         usuarioEmpleadoDTO.setEmpleado(usuarioEmpleadoDTO.getEmpleado());
         Usuario user = MHelpers.modelMapper().map(usuarioEmpleadoDTO, Usuario.class);
-        user.setRol(new Rol(null,"USER"));
+        Rol rol = repoRol.findByTipoRol("EMPLEADO");
+        user.setRol(rol);
         return repoUsuario.save(user);
     }
 
